@@ -72,7 +72,7 @@ ADD PEARish.xml /root/PEARish.xml
 
 # Install python linting and neovim plugin
 RUN pip install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes pep8-naming pep257 isort
-RUN pip3 install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes pep8-naming pep257 isort mypy
+RUN pip3 install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes pep8-naming pep257 isort mypy ansible-lint
 
 
 ########################################
