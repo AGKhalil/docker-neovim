@@ -27,6 +27,9 @@ RUN apt-get update && apt-get install -y \
       ranger \ 
       ack-grep \
       sqlite3 \
+      # For python crypto libraries
+      libssl-dev \
+      libffi-dev \
       locales
 
 # Generally a good idea to have these, extensions sometimes need them
@@ -71,8 +74,11 @@ ADD PEARish.xml /root/PEARish.xml
 ########################################
 
 # Install python linting and neovim plugin
-RUN pip install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes pep8-naming pep257 isort
-RUN pip3 install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes pep8-naming pep257 isort mypy ansible-lint
+RUN pip install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes
+RUN pip install pep8-naming pep257 isort
+RUN pip3 install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes
+RUN pip3 install pep8-naming pep257 isort mypy ansible-lint flake8-bugbear
+RUN pip3 install flake8-commas flake8-comprehensions
 
 
 ########################################
