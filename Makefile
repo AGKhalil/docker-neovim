@@ -9,6 +9,7 @@ help:
 setup: ## Clone down additional repos that are needed for building
 	git clone git@github.com:thornycrackers/.nvim.git nvim
 	git clone git@github.com:thornycrackers/vim-options.git
+	git clone git@github.com:thornycrackers/.vim.git vim
 	git clone https://github.com/sunaku/dasht
 
 build: ## Build the base image
