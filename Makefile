@@ -15,6 +15,9 @@ setup: ## Clone down additional repos that are needed for building
 build: ## Build the base image
 	docker build -t thornycrackers/neovim .
 
+build-nocache: ## Build the base image with no cache
+	docker build --no-cache=true -t thornycrackers/neovim .
+
 up: build ## Bring the container up
 	docker run -dP -v $(CURDIR):/root/app --name $(CONTAINERNAME) $(IMAGENAME) /bin/bash -c 'while true; do echo hi; sleep 1; done;'
 
