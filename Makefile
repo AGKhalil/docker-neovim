@@ -30,5 +30,5 @@ enter: ## Enter the running container
 clean: down ## Remove the image and any stopped containers
 	docker rm $(CONTAINERNAME) || echo 'No container to remove'
 	
-push:
+push: ## Push the container to dockerhub
 	docker push $(IMAGENAME)
