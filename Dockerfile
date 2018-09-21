@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y \
       ranger \ 
       ack-grep \
       sqlite3 \
+      unzip \
       # For python crypto libraries
       libssl-dev \
       libffi-dev \
@@ -45,6 +46,15 @@ RUN add-apt-repository ppa:neovim-ppa/stable
 RUN apt-get update && apt-get install -y \
       neovim
 
+# Install Ledger
+RUN add-apt-repository ppa:mbudde/ledger
+RUN apt-get update && apt-get install -y \
+      ledger
+
+# Install Terraform for linting
+RUN wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip && \
+    unzip terraform_0.11.8_linux_amd64.zip && \
+    mv terraform /usr/bin
 
 ########################################
 # Python
