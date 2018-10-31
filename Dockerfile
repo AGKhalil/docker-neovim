@@ -94,4 +94,4 @@ ADD vim-options /root/.config/nvim/plugged/vim-options
 # Add isort config, also changes often
 ADD isort.cfg /root/.isort.cfg
 # Add ranger config
-ADD rc.conf /root/.ranger/rc.conf
+ADD rc.conf /root/.config/ranger/rc.conf
