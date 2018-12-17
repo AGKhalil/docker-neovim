@@ -61,11 +61,11 @@ RUN wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_
 ########################################
 
 # Install python linting and neovim plugin
-RUN pip install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes
-RUN pip install pep8-naming pep257 isort
-RUN pip3 install neovim jedi flake8 flake8-docstrings flake8-isort flake8-quotes
-RUN pip3 install pep8-naming pep257 isort mypy ansible-lint flake8-bugbear
-RUN pip3 install flake8-commas flake8-comprehensions
+ADD py2_requirements.txt /opt/py2_requirements.txt
+RUN cd /opt && pip2 install -r py2_requirements.txt
+
+ADD py3_requirements.txt /opt/py3_requirements.txt
+RUN cd /opt && pip3 install -r py3_requirements.txt
 
 
 ########################################
