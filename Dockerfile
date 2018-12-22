@@ -24,7 +24,6 @@ RUN apt-get update && apt-get install -y \
       ctags \
       shellcheck \
       netcat \
-      ranger \ 
       ack-grep \
       sqlite3 \
       unzip \
@@ -55,6 +54,11 @@ RUN apt-get update && apt-get install -y \
 RUN wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip && \
     unzip terraform_0.11.8_linux_amd64.zip && \
     mv terraform /usr/bin
+
+# Ubuntu ranger old and doesn't support 'wrap_scroll'.
+RUN git clone https://github.com/thornycrackers/ranger.git /tmp/ranger && \
+    cd /tmp/ranger && \
+    make install
 
 ########################################
 # Python
