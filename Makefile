@@ -7,10 +7,9 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 setup: ## Clone down additional repos that are needed for building
-	git clone git@github.com:thornycrackers/.nvim.git nvim
-	git clone git@github.com:thornycrackers/vim-options.git
-	git clone git@github.com:thornycrackers/.vim.git vim
-	git clone https://github.com/sunaku/dasht
+	git clone https://github.com/thornycrackers/.nvim.git nvim
+	git clone https://github.com/thornycrackers/vim-options.git
+	git clone https://github.com/thornycrackers/.vim.git vim
 
 build: ## Build the base image
 	docker build -t thornycrackers/neovim .
