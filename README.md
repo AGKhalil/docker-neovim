@@ -57,5 +57,5 @@ a pretty rare case in my trials of using this but it is something to note.
 
 ## NOTE:
 
-I do set the git identity to myself inside the Dockerfile so do be aware
+I do set the git identity to myself inside the Dockerfile so be aware
 that you might want to change it to yourself.
