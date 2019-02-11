@@ -16,7 +16,7 @@ pipeline {
             stage('Build') {
                 steps {
                     sh 'make setup'
-                        sh 'make build'
+                    sh 'make build'
                 }
             }
             stage('Push Image'){
