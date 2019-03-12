@@ -19,7 +19,7 @@ build-nocache: ## Build the base image with no cache
 	docker build --no-cache=true -t thornycrackers/neovim .
 
 up: build ## Bring the container up
-	docker run -dP -v $(CURDIR):/src --name $(CONTAINERNAME) $(IMAGENAME) /bin/bash -c 'while true; do echo hi; sleep 1; done;'
+	docker run -dP -v $(CURDIR):/root/app --name $(CONTAINERNAME) $(IMAGENAME) /bin/bash -c 'while true; do echo hi; sleep 1; done;'
 
 down: ## Stop the container
 	docker stop $(CONTAINERNAME) || echo 'No container to stop'

@@ -75,31 +75,27 @@ RUN cd /opt && pip3 install -r py3_requirements.txt
 ########################################
 # Personalizations
 ########################################
-# Setup non root user
-RUN groupadd -g 1000 thorny
-RUN useradd -m -d /home/thorny -s /bin/bash -g thorny -u 1000 thorny
-USER thorny
 # Add some aliases
-COPY --chown=thorny bashrc /home/thorny/.bashrc
+ADD bashrc /root/.bashrc
 # Add my git config
-COPY --chown=thorny gitconfig /home/thorny/.gitconfig
+ADD gitconfig /etc/gitconfig
+# Change the workdir, Put it inside root so I can see neovim settings in finder
+WORKDIR /root/app
 # Neovim needs this so that <ctrl-h> can work
-RUN infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > /home/thorny/$TERM.ti
-RUN tic /home/thorny/$TERM.ti
+RUN infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > /tmp/$TERM.ti
+RUN tic /tmp/$TERM.ti
 # Command for the image
 CMD ["/bin/bash"]
 # Add nvim config. Put this last since it changes often
-COPY --chown=thorny nvim /home/thorny/.config/nvim
+ADD nvim /root/.config/nvim
 # Install neovim plugins
 RUN nvim -i NONE -c PlugInstall -c quitall > /dev/null 2>&1
-RUN cd /home/thorny/.config/nvim/plugged/YouCompleteMe && python3 install.py
+RUN cd /root/.config/nvim/plugged/YouCompleteMe && python3 install.py
 # Add flake8 config, don't trigger a long build process
-COPY --chown=thorny flake8 /home/thorny/.flake8
+ADD flake8 /root/.flake8
 # Add local vim-options, can override the one inside
-COPY --chown=thorny vim-options /home/thorny/.config/nvim/plugged/vim-options
+ADD vim-options /root/.config/nvim/plugged/vim-options
 # Add isort config, also changes often
-COPY --chown=thorny isort.cfg /home/thorny/.isort.cfg
+ADD isort.cfg /root/.isort.cfg
 # Add ranger config
-COPY --chown=thorny rc.conf /home/thorny/.config/ranger/rc.conf
-# Set the workdir
-WORKDIR /src
+ADD rc.conf /root/.config/ranger/rc.conf
