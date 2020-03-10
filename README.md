@@ -1,3 +1,10 @@
+# Unmaintained
+
+This was always a bit of an exercise is just getting to see the limits of what
+could be pushed with a dockerized environment. I don't use this anymore so it's
+possible that things don't work correctly anymore
+
+
 # Dockerized Neovim
 
 Run neovim in a container and be cool like all the other cool kids. I'm
